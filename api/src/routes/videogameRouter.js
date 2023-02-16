@@ -1,8 +1,9 @@
 const { Router } = require("express");
-const getApiInfo = require("../utils/getApiInfo");
-const getDBdata = require("../utils/getDBinfo");
+// const getApiInfo = require("../utils/getApiInfo");
+// const getDBdata = require("../utils/getDBinfo");
 const getVideoGameInfo = require("../utils/getVideogameInfo");
 const joinData = require("../utils/joinApiDBdata");
+const postVideogame = require("../utils/postVideogame");
 
 //defino el router para /videogames
 const videogamesRouter = Router();
@@ -30,8 +31,13 @@ videogamesRouter.get("/:id", async (req, res) => {
 });
 
 //post videogame on the db
-videogamesRouter.post("/", (req, res) => {
-  res.send("CREA UN VIDEOJUEGO Y LO RELACIONA CON AL MENOS UN GENERO");
+videogamesRouter.post("/", async (req, res) => {
+  try {
+    const newVideogame = await postVideogame(req.body);
+    res.status(201).json(newVideogame);
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
 });
 
 module.exports = videogamesRouter;
