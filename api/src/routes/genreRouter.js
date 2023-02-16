@@ -1,9 +1,15 @@
 const { Router } = require("express");
+const getGenres = require("../utils/getGenres");
 
 const genreRouter = Router();
 
-genreRouter.get("/", (req, res) => {
-  res.send("OBTIENE LOS GENEROS DE LA API Y LOS GUARDA EN LA DB");
+genreRouter.get("/", async (req, res) => {
+  try {
+    const genres = await getGenres();
+    res.status(200).json(genres);
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
 });
 
 module.exports = genreRouter;
