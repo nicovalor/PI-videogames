@@ -1,9 +1,9 @@
 const { Router } = require("express");
 // const getApiInfo = require("../utils/getApiInfo");
 // const getDBdata = require("../utils/getDBinfo");
-const getVideoGameInfo = require("../utils/getVideogameInfo");
+const getVideoGameInfo = require("../controllers/getVideogameInfo");
 const joinData = require("../utils/joinApiDBdata");
-const postVideogame = require("../utils/postVideogame");
+const postVideogame = require("../controllers/postVideogame");
 
 //defino el router para /videogames
 const videogamesRouter = Router();

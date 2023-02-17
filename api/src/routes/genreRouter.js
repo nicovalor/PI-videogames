@@ -1,5 +1,5 @@
 const { Router } = require("express");
-const getGenres = require("../utils/getGenres");
+const getGenres = require("../controllers/getGenres");
 
 const genreRouter = Router();
 

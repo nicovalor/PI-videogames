@@ -1,5 +1,5 @@
-const getApiInfo = require("./getApiInfo");
-const getDBdata = require("./getDBinfo");
+const getApiInfo = require("../controllers/getApiInfo");
+const getDBdata = require("../controllers/getDBinfo");
 
 const joinData = async (name) => {
   const apiData = await getApiInfo(name);
