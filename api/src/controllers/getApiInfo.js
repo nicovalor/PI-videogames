@@ -37,6 +37,7 @@ const getApiInfo = async (name) => {
   );
 
   resultsByName = resultsByName.data.results;
+  resultsByName = cleanArray(resultsByName);
 
   return resultsByName;
 };

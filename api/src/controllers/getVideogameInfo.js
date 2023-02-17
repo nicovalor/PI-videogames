@@ -1,6 +1,5 @@
 const { Videogame } = require("../db");
 const axios = require("axios");
-const cleanArray = require("../utils/cleanArray");
 const cleanVideogame = require("../utils/cleanVideogame");
 require("dotenv").config();
 const { API_KEY } = process.env;
