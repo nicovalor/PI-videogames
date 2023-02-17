@@ -20,6 +20,7 @@ const postVideogame = async (body) => {
       image,
       launchDate,
       rating,
+      created: true,
     };
     const game = await Videogame.create(newVideogame);
     await game.addGenre(genreId);
