@@ -6,7 +6,12 @@ const { API_KEY } = process.env;
 
 const getVideoGameInfo = async (id) => {
   if (id.length > 10) {
-    const videoGameInfo = await Videogame.findByPk(id);
+    const videoGameInfo = await Videogame.findByPk(id, {
+      include: {
+        model: Genre,
+        attributes: ["name"],
+      },
+    });
     return videoGameInfo;
   } else {
     let videoGameInfo = await axios.get(
