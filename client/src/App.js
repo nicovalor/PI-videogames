@@ -9,10 +9,6 @@ function App() {
       <Route exact path="/" component={Landing} />
       <Route path="/home" component={Home} />
     </div>
-    // <div className="App">
-    //   <h1>Henry Videogames</h1>
-
-    // </div>
   );
 }
 
