@@ -1,4 +1,5 @@
 const axios = require("axios");
+const cleanArray = require("../utils/cleanArray");
 require("dotenv").config();
 const { API_KEY } = process.env;
 
@@ -21,13 +22,13 @@ const getApiInfo = async (name) => {
     const pageFour = await axios.get(nextPage);
     const resultsPage4 = pageFour.data.results;
 
-    const results = [
+    let results = [
       ...resultsPage1,
       ...resultsPage2,
       ...resultsPage3,
       ...resultsPage4,
     ];
-
+    results = cleanArray(results);
     return results;
   }
 
@@ -36,6 +37,7 @@ const getApiInfo = async (name) => {
   );
 
   resultsByName = resultsByName.data.results;
+  resultsByName = cleanArray(resultsByName);
 
   return resultsByName;
 };

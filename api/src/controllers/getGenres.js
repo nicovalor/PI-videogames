@@ -9,9 +9,9 @@ const getGenres = async () => {
     let data = await axios.get(`https://api.rawg.io/api/genres?key=${API_KEY}`);
     data = data.data.results;
 
-    data.forEach((genre) => Genre.create({ name: genre.name }));
+    data.forEach((genre) => Genre.create({ name: genre.name, id: genre.id }));
     const genresFromApi = data.map((genre) => {
-      return { name: genre.name, games: genre.games };
+      return { name: genre.name, games: genre.games, id: genre.id };
     });
     return genresFromApi;
   } else {
