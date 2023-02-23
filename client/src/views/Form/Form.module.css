@@ -1,0 +1,15 @@
+.form {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+}
+
+.labels {
+  display: flex;
+  flex-direction: column;
+}
+
+.inputs {
+  display: flex;
+  flex-direction: column;
+}
