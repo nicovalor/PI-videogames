@@ -6,7 +6,7 @@ const { API_KEY } = process.env;
 const getApiInfo = async (name) => {
   if (!name) {
     const pageOne = await axios.get(
-      `https://api.rawg.io/api/games?key=${API_KEY}&page_size=50`
+      `https://api.rawg.io/api/games?key=${API_KEY}&page_size=30`
     );
     const resultsPage1 = pageOne.data.results;
     let nextPage = pageOne.data.next;
