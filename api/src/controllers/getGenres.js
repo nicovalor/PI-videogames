@@ -10,12 +10,10 @@ const getGenres = async () => {
     data = data.data.results;
 
     data.forEach((genre) => Genre.create({ name: genre.name, id: genre.id }));
-    const genresFromApi = data.map((genre) => {
-      return { name: genre.name, games: genre.games, id: genre.id };
-    });
+    const genresFromApi = data.map((genre) => genre.name);
     return genresFromApi;
   } else {
-    return genres;
+    return genres.map((genre) => genre.name);
   }
 };
 
