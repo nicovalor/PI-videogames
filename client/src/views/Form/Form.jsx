@@ -1,37 +1,13 @@
 import { useEffect, useState } from "react";
 import style from "./Form.module.css";
-
+import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import { getGenres } from "../../redux/actions";
-
-const validate = (form) => {
-  const errors = {};
-  if (!form.name) errors.name = "Es necesario escribir un nombre";
-  if (!form.description)
-    errors.description = "Es necesario escribir un descripción";
-
-  if (!form.launchDate)
-    errors.launchDate = "Es necesario ingresar una fecha de lanzamiento";
-
-  if (!/\d/.test(form.rating)) errors.rating = "El rating debe ser un número";
-  if (form.rating > 5 || form.rating < 0)
-    errors.rating = "El rating debe ser un número entre 1 y 5";
-  if (!form.rating) errors.rating = "Es necesario ingresar un rating";
-  return errors;
-};
-
-const validateGenres = (form) => {
-  const errors = {};
-  if (!form.genres.length) errors.genres = "Debe elegir al menos un género";
-  return errors;
-};
-
-const validatePlatforms = (form) => {
-  const errors = {};
-  if (!form.platforms.length)
-    errors.platforms = "Debe escribir al menos una plataforma";
-  return errors;
-};
+import {
+  validate,
+  validateGenres,
+  validatePlatforms,
+} from "../../utils/validations";
 
 const Form = () => {
   const dispatch = useDispatch();
@@ -42,7 +18,6 @@ const Form = () => {
   const genres = useSelector((state) => state.genres);
 
   const [form, setForm] = useState({
-    id: "",
     name: "",
     genres: [],
     image: "",
@@ -101,9 +76,9 @@ const Form = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    //if (!Object.keys(errors).length) {
-    //axios.post("http://localhost:3001/videogames", form);
-    //}
+    if (!Object.keys(errors).length) {
+      axios.post("http://localhost:3001/videogames", form);
+    }
   };
   return (
     <div>
