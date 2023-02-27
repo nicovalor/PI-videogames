@@ -7,6 +7,7 @@ const cleanVideogame = (videogame) => {
     image: videogame.background_image,
     launchDate: videogame.released,
     rating: videogame.rating,
+    genre: videogame.genres.map((genre) => genre.name),
   };
 };
 module.exports = cleanVideogame;

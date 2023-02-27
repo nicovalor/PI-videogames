@@ -20,19 +20,17 @@ const Detail = () => {
       <h1>{videogame?.name}</h1>
       <span>{videogame?.id}</span>
       <img src={videogame?.image} alt="Foto del juego" />
-      {/* <ul>
-        {videogame?.platforms.map((platform) => (
-          <li>{platform.name}</li>
-        ))}
-      </ul> */}
+      <ul>
+        {videogame.platforms &&
+          videogame.platforms.map((platform) => <li>{platform}</li>)}
+      </ul>
       <p>{videogame?.description}</p>
       <span>{videogame?.launchDate}</span>
       <h4>{videogame?.rating}</h4>
-      {/* <ul>
-        {videogame?.genres.map((genre) => (
-          <li>{genre.name}</li>
-        ))}
-      </ul> */}
+      <ul>
+        {videogame.genres &&
+          videogame.genres.map((genre) => <li>{genre.name}</li>)}
+      </ul>
     </div>
   );
 };

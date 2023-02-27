@@ -5,8 +5,8 @@ import {
   orderVideogamesByName,
   orderVideogamesByRating,
   filterByOrigin,
-  getVideogames,
   filterByGenre,
+  getVideogamesByName,
 } from "../../redux/actions";
 import { useSelector } from "react-redux";
 import Card from "../Card/Card";
@@ -17,8 +17,6 @@ const CardsContainer = () => {
 
   const videogames = useSelector((state) => state.videogames);
   const genres = useSelector((state) => state.genres);
-
-  useEffect(() => {}, [videogames]);
 
   const [currentPage, setCurrentPage] = useState(1);
   const [postsPerPage, setPostsperPage] = useState(15);
@@ -50,6 +48,8 @@ const CardsContainer = () => {
     setCurrentPage(1);
     setOrder(`Ordered ${event.target.value}`);
   };
+
+  useEffect(() => {}, [videogames]);
 
   return (
     <div>

@@ -19,8 +19,12 @@ const SearchBar = () => {
   };
   return (
     <div className={style.container}>
-      <input type="text" onChange={handleChange} name="SearchBar"></input>
-      <button onClick={handleClick}>BUSCAR</button>
+      <input
+        type="text"
+        onChange={(event) => handleChange(event)}
+        name="SearchBar"
+      ></input>
+      <button onClick={(event) => handleClick(event)}>BUSCAR</button>
     </div>
   );
 };

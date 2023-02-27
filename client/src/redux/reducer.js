@@ -23,7 +23,12 @@ const reducer = (state = initialState, { type, payload }) => {
     case GET_GENRES:
       return { ...state, genres: payload };
     case GET_VIDEOGAMES_BY_NAME:
-      return { ...state, filtered1: payload, filtered2: payload };
+      return {
+        ...state,
+        videogames: payload,
+        filtered1: payload,
+        filtered2: payload,
+      };
     case ORDER_VIDEOGAMES_BY_NAME:
       return {
         ...state,
