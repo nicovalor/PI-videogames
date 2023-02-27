@@ -1,4 +1,19 @@
 .container {
   border: 1px solid black;
   border-radius: 10px;
+  width: fit-content;
+  overflow: hidden;
+}
+.image {
+  border-radius: 2rem;
+  width: 10rem;
+  height: 10rem;
+}
+.genres {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  flex-wrap: wrap;
+  overflow: hidden;
+  gap: 0.4rem;
 }

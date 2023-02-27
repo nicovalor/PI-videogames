@@ -8,7 +8,7 @@ const cleanArray = (arr) => {
       image: element.background_image,
       launchDate: element.released,
       rating: element.rating,
-      created: false,
+      genres: element.genres.map((genre) => genre.name),
     };
   });
 };

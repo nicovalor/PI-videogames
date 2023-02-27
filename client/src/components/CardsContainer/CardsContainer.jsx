@@ -6,6 +6,7 @@ import {
   orderVideogamesByRating,
   filterByOrigin,
   getVideogames,
+  filterByGenre,
 } from "../../redux/actions";
 import { useSelector } from "react-redux";
 import Card from "../Card/Card";
@@ -15,6 +16,7 @@ const CardsContainer = () => {
   const dispatch = useDispatch();
 
   const videogames = useSelector((state) => state.videogames);
+  const genres = useSelector((state) => state.genres);
 
   useEffect(() => {}, [videogames]);
 
@@ -29,6 +31,10 @@ const CardsContainer = () => {
   const [order, setOrder] = useState("");
   const handleFilteredCreated = (event) => {
     dispatch(filterByOrigin(event.target.value));
+  };
+
+  const hanldeFilterGenre = (event) => {
+    dispatch(filterByGenre(event.target.value));
   };
 
   //order by name
@@ -46,33 +52,56 @@ const CardsContainer = () => {
   };
 
   return (
-    <div className={style.container}>
+    <div>
       <div className={style.filters}>
         <select onChange={(e) => handleSortByName(e)}>
-          <option>Ordenar por nombre</option>
+          <option selected hidden value="order">
+            Ordenar por nombre
+          </option>
           <option value="A-Z">From A to Z</option>
           <option value="Z-A">From Z to A</option>
         </select>
         <select onChange={(e) => handleRating(e)}>
-          <option>Ordenar por rating</option>
+          <option selected hidden value="order">
+            Ordenar por rating
+          </option>
           <option value="Ascendente">Lower rating</option>
           <option value="Descendente">Higher rating</option>
+        </select>
+
+        <select onChange={(event) => hanldeFilterGenre(event)}>
+          <option selected hidden value="filter">
+            Filtrar por género
+          </option>
+          {genres?.map((genre) => (
+            <option value={genre}>{genre}</option>
+          ))}
         </select>
         <select
           onChange={(e) => {
             handleFilteredCreated(e);
           }}
         >
-          <option value="All">All</option>
+          <option value="All" selected>
+            All
+          </option>
           <option value="DB">Created</option>
           <option value="api">Api</option>
         </select>
       </div>
-
-      {currentPosts?.map((game, index) => {
-        return <Card key={index} name={game.name} />;
-      })}
-
+      <div className={style.container}>
+        {currentPosts?.map((game, index) => {
+          return (
+            <Card
+              key={index}
+              name={game.name}
+              image={game.image}
+              genres={game.genres}
+              id={game.id}
+            />
+          );
+        })}
+      </div>
       <Paginations
         postsPerPage={postsPerPage}
         setCurrentPage={setCurrentPage}

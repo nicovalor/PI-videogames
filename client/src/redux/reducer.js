@@ -1,4 +1,5 @@
 import {
+  FILTER_BY_GENRE,
   FILTER_BY_ORIGIN,
   GET_GENRES,
   GET_VIDEOGAMES,
@@ -17,6 +18,7 @@ const reducer = (state = initialState, { type, payload }) => {
         videogames: payload,
         filter1: payload,
         filter2: payload,
+        filter3: payload,
       };
     case GET_GENRES:
       return { ...state, genres: payload };
@@ -47,6 +49,16 @@ const reducer = (state = initialState, { type, payload }) => {
             : payload === "DB"
             ? state.filter1.filter((videogame) => videogame.created)
             : state.filter1.filter((videogame) => !videogame.created),
+      };
+    case FILTER_BY_GENRE:
+      return {
+        ...state,
+        videogames:
+          payload === "All"
+            ? state.videogames
+            : state.filter3.filter((videogame) =>
+                videogame.genres.includes(payload)
+              ),
       };
     default:
       return { ...state };
