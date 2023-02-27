@@ -3,6 +3,9 @@ import axios from "axios";
 export const GET_VIDEOGAMES = "GET_VIDEOGAMES";
 export const GET_GENRES = "GET_GENRES";
 export const GET_VIDEOGAMES_BY_NAME = "GET_VIDEOGAMES_BY_NAME";
+export const ORDER_VIDEOGAMES_BY_NAME = "ORDER_VIDEOGAMES";
+export const ORDER_VIDEOGAMES_BY_RATING = "ORDER_VIDEOGAMES_BY_RATING";
+export const FILTER_BY_ORIGIN = "FILTER_BY_ORIGIN";
 
 export const getVideogames = () => {
   return async (dispatch) => {
@@ -29,4 +32,16 @@ export const getVideogamesByName = (name) => {
     const videogames = apiData.data;
     dispatch({ type: GET_VIDEOGAMES_BY_NAME, payload: videogames });
   };
+};
+
+export const orderVideogamesByName = (name) => {
+  return { type: ORDER_VIDEOGAMES_BY_NAME, payload: name };
+};
+
+export const orderVideogamesByRating = (rating) => {
+  return { type: ORDER_VIDEOGAMES_BY_RATING, payload: rating };
+};
+
+export const filterByOrigin = (origin) => {
+  return { type: FILTER_BY_ORIGIN, payload: origin };
 };

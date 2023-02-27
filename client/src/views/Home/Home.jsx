@@ -1,4 +1,4 @@
-//import style from "./Home.module.css";
+// import style from "./Home.module.css";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { getVideogames } from "../../redux/actions";

@@ -6,7 +6,7 @@ import Form from "./views/Form/Form";
 import NavBar from "./views/NavBar/NavBar";
 
 function App() {
-  const location = useLocation;
+  const location = useLocation();
   return (
     <div className="App">
       {location.pathname !== "/" && <NavBar />}
