@@ -81,84 +81,142 @@ const Form = () => {
     }
   };
   return (
-    <div>
-      <h1>Esta es la vista del Form</h1>
+    <div className={style.container}>
       <form className={style.form} onSubmit={handleSubmit}>
-        <div className={style.labels}>
-          <label>Nombre del videojuego</label>
-          <label>Géneros</label>
-          <label>Link de la imagen</label>
-          <label>Descripción</label>
-          <label>Plataformas</label>
-          <label>Fecha de lanzamiento</label>
-          <label>Rating</label>
+        <div className={style.row}>
+          <div className={style.column}>
+            <label>Nombre del videojuego</label>
+          </div>
+          <div className={style.column}>
+            <input
+              autoComplete="off"
+              type="text"
+              name="name"
+              value={form.name}
+              onChange={handleChange}
+            />
+          </div>
+          <div className={style.column}>
+            {errors.name && <span>{errors.name}</span>}
+          </div>
         </div>
-        <div className={style.inputs}>
-          <input
-            type="text"
-            name="name"
-            value={form.name}
-            onChange={handleChange}
-          />
-
-          <select
-            name="genres"
-            value={form.genres}
-            multiple="true"
-            required="true"
-            onChange={handleChangeGenre}
-          >
-            {genres?.map((genre) => (
-              <option value={genre}>{genre}</option>
-            ))}
-          </select>
-
-          <input
-            type="text"
-            name="image"
-            value={form.image}
-            onChange={handleChange}
-          />
-
-          <textarea
-            type="text"
-            name="description"
-            value={form.description}
-            onChange={handleChange}
-          />
-
-          <input
-            type="text"
-            name="platforms"
-            value={form.platforms}
-            onChange={handleChangePlatforms}
-          />
-
-          <input
-            type="text"
-            name="launchDate"
-            value={form.launchDate}
-            onChange={handleChange}
-          />
-
-          <input
-            type="text"
-            name="rating"
-            value={form.rating}
-            onChange={handleChange}
-          />
-          <button type="submit">CREAR JUEGO</button>
+        <div className={style.row}>
+          <div className={style.column}>
+            <label>Géneros</label>
+          </div>
+          <div className={style.column}>
+            <select
+              name="genres"
+              value={form.genres}
+              multiple="true"
+              required="true"
+              onChange={handleChangeGenre}
+            >
+              {genres?.map((genre) => (
+                <option value={genre}>{genre}</option>
+              ))}
+            </select>
+          </div>
+          <div className={style.column}>
+            {errors.genres && <span>{errors.genres}</span>}
+          </div>
         </div>
+        <div className={style.row}>
+          <div className={style.column}>
+            <label>Link de la imagen</label>
+          </div>
+          <div className={style.column}>
+            <input
+              autoComplete="off"
+              type="text"
+              name="image"
+              value={form.image}
+              onChange={handleChange}
+            />
+          </div>
+          <div className={style.column}>
+            {errors.image && <span>{errors.image}</span>}
+          </div>
+        </div>
+        <div className={style.row}>
+          <div className={style.column}>
+            <label>Descripción</label>
+          </div>
+          <div className={style.column}>
+            <textarea
+              autoComplete="off"
+              type="text"
+              name="description"
+              value={form.description}
+              onChange={handleChange}
+            />
+          </div>
+          <div className={style.column}>
+            {errors.description && <span>{errors.description}</span>}
+          </div>
+        </div>
+        <div className={style.row}>
+          <div className={style.column}>
+            <label>Plataformas</label>
+          </div>
+          <div className={style.column}>
+            <input
+              autoComplete="off"
+              type="text"
+              name="platforms"
+              value={form.platforms}
+              onChange={handleChangePlatforms}
+            />
+          </div>
+          <div className={style.column}>
+            {errors.platforms && <span>{errors.platforms}</span>}
+          </div>
+        </div>
+        <div className={style.row}>
+          <div className={style.column}>
+            <label>Fecha de lanzamiento</label>
+          </div>
+          <div className={style.column}>
+            <input
+              autoComplete="off"
+              type="text"
+              name="launchDate"
+              value={form.launchDate}
+              onChange={handleChange}
+            />
+          </div>
+          <div className={style.column}>
+            {errors.lauchDate && <span>{errors.launchDate}</span>}
+          </div>
+        </div>
+        <div className={style.row}>
+          <div className={style.column}>
+            <label>Rating</label>
+          </div>
+          <div className={style.column}>
+            <input
+              autoComplete="off"
+              type="text"
+              name="rating"
+              value={form.rating}
+              onChange={handleChange}
+            />
+          </div>
+          <div className={style.column}>
+            {errors.rating && <span>{errors.rating}</span>}
+          </div>
+        </div>
+
+        {Object.keys(errors).length ? (
+          <button className={style.disabledButton} disabled type="submit">
+            CREAR JUEGO
+          </button>
+        ) : (
+          <button className={style.button} type="submit">
+            CREAR JUEGO
+          </button>
+        )}
       </form>
-      <div className={style.errors}>
-        {errors.name && <span>{errors.name}</span>}
-        {errors.genres && <span>{errors.genres}</span>}
-        {errors.image && <span>{errors.image}</span>}
-        {errors.description && <span>{errors.description}</span>}
-        {errors.platforms && <span>{errors.platforms}</span>}
-        {errors.lauchDate && <span>{errors.launchDate}</span>}
-        {errors.rating && <span>{errors.rating}</span>}
-      </div>
     </div>
   );
 };
