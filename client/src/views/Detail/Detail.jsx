@@ -17,20 +17,24 @@ const Detail = () => {
 
   return (
     <div className={style.container}>
-      <h1>{videogame?.name}</h1>
-      <span>{videogame?.id}</span>
-      <img src={videogame?.image} alt="Foto del juego" />
-      <ul>
-        {videogame.platforms &&
-          videogame.platforms.map((platform) => <li>{platform}</li>)}
-      </ul>
-      <p>{videogame?.description}</p>
-      <span>{videogame?.launchDate}</span>
-      <h4>{videogame?.rating}</h4>
-      <ul>
-        {videogame.genres &&
-          videogame.genres.map((genre) => <li>{genre.name}</li>)}
-      </ul>
+      <div className={style.card}>
+        <h1>{videogame?.name}</h1>
+        <span className={style.id}>ID: {videogame?.id}</span>
+        <img src={videogame?.image} alt="Foto del juego" />
+        <ul>
+          {videogame.platforms &&
+            videogame.platforms.map((platform) => <li>{platform}</li>)}
+        </ul>
+        <p>
+          {videogame?.description.split("<p>").join("").split("</p>").join("")}
+        </p>
+        <span>Release date: {videogame?.launchDate}</span>
+        <h4>Rating: {videogame?.rating}</h4>
+        <ul>
+          {videogame.genres &&
+            videogame.genres.map((genre) => <li>{genre.name}</li>)}
+        </ul>
+      </div>
     </div>
   );
 };
