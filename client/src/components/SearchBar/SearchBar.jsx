@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { getVideogamesByName } from "../../redux/actions";
 import style from "./SearchBar.module.css";
@@ -20,11 +20,15 @@ const SearchBar = () => {
   return (
     <div className={style.container}>
       <input
+        autoComplete="off"
+        className={style.bar}
         type="text"
         onChange={(event) => handleChange(event)}
         name="SearchBar"
       ></input>
-      <button onClick={(event) => handleClick(event)}>BUSCAR</button>
+      <button className={style.button} onClick={(event) => handleClick(event)}>
+        BUSCAR
+      </button>
     </div>
   );
 };

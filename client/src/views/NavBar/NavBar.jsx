@@ -1,17 +1,24 @@
 import SearchBar from "../../components/SearchBar/SearchBar";
 import style from "./NavBar.module.css";
 import { Link, useLocation } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { getVideogames } from "../../redux/actions";
 
 export default function NavBar() {
   const location = useLocation();
+  const dispatch = useDispatch();
+
+  const handleHomeButton = (event) => {
+    dispatch(getVideogames());
+  };
 
   return (
     <div className={style.container}>
-      <Link to="/home">
-        <button>HOME</button>
+      <Link className={style.button} to="/home">
+        <div onClick={handleHomeButton}>HOME</div>
       </Link>
-      <Link to="/form">
-        <button>CREAR JUEGO</button>
+      <Link className={style.button} to="/form">
+        <div>CREAR JUEGO</div>
       </Link>
 
       {location.pathname === "/home" ? (

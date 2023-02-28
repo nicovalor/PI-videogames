@@ -1,0 +1,27 @@
+.container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 0.8rem;
+  margin: 2rem 0;
+}
+.button {
+  padding: 0.8rem 0.9rem;
+  font-size: medium;
+  font-weight: bold;
+  color: #632fab;
+  background-color: #fff42c;
+  border: none;
+  border-radius: 0.3rem;
+  text-decoration: none;
+}
+
+.button:hover {
+  background-color: #cac10d;
+}
+
+.button:active {
+  background-color: #632fab;
+  color: #fff42c;
+}

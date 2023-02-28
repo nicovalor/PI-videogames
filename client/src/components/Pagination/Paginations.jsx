@@ -1,3 +1,5 @@
+import style from "./Pagination.module.css";
+
 const Paginations = ({ totalPosts, postsPerPage, setCurrentPage }) => {
   const pages = [];
   for (let i = 1; i < Math.ceil(totalPosts / postsPerPage); i++) {
@@ -8,10 +10,14 @@ const Paginations = ({ totalPosts, postsPerPage, setCurrentPage }) => {
     setCurrentPage(page);
   };
   return (
-    <div>
+    <div className={style.container}>
       {pages.map((page, index) => {
         return (
-          <button key={index} onClick={() => handleClick(page)}>
+          <button
+            className={style.button}
+            key={index}
+            onClick={() => handleClick(page)}
+          >
             {page}
           </button>
         );

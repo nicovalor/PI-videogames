@@ -73,6 +73,7 @@ const CardsContainer = () => {
           <option selected hidden value="filter">
             Filtrar por género
           </option>
+          <option value="All">All</option>
           {genres?.map((genre) => (
             <option value={genre}>{genre}</option>
           ))}

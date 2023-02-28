@@ -1,4 +1,4 @@
-// import style from "./Home.module.css";
+import style from "./Home.module.css";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { getGenres, getVideogames } from "../../redux/actions";
@@ -14,8 +14,7 @@ const Home = () => {
   }, [dispatch]);
 
   return (
-    <div>
-      <h1>Esto es la Home</h1>
+    <div className={style.background}>
       <CardsContainer />
     </div>
   );

@@ -4,9 +4,9 @@ import { Link } from "react-router-dom";
 
 const Card = (props) => {
   return (
-    <Link to={`/videogame/${props.id}`}>
+    <Link className={style.link} to={`/videogame/${props.id}`}>
       <div className={style.container}>
-        <h3>{props.name}</h3>
+        <h3 className={style.title}>{props.name}</h3>
         <img className={style.image} src={props.image} alt="" />
         <div className={style.genres}>
           {props.genres.map((genre, index) => (
