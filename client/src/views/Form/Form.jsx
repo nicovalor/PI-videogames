@@ -186,7 +186,7 @@ const Form = () => {
             />
           </div>
           <div className={style.column}>
-            {errors.lauchDate && <span>{errors.launchDate}</span>}
+            {errors.launchDate && <span>{errors.launchDate}</span>}
           </div>
         </div>
         <div className={style.row}>
