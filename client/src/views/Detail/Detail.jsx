@@ -26,7 +26,8 @@ const Detail = () => {
             videogame.platforms.map((platform) => <li>{platform}</li>)}
         </ul>
         <p>
-          {videogame?.description.split("<p>").join("").split("</p>").join("")}
+          {videogame.description &&
+            videogame?.description.split(/<[^>]+>/).join("")}
         </p>
         <span>Release date: {videogame?.launchDate}</span>
         <h4>Rating: {videogame?.rating}</h4>

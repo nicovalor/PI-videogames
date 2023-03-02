@@ -24,6 +24,8 @@ const postVideogame = async (body) => {
     const genres = genreId.map((id) => {
       Genre.findAll({ where: { id: id } });
     });
+
+    //ADD GENRES SE LED EBE PASAR LOS IDs
     genres.forEach(async (genre) => {
       await game.addGenres(genre);
     });
