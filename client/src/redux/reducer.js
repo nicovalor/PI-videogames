@@ -16,9 +16,8 @@ const reducer = (state = initialState, { type, payload }) => {
       return {
         ...state,
         videogames: payload,
-        filter1: payload,
-        filter2: payload,
-        filter3: payload,
+        videogamesCopy: payload,
+        videogamesCopy2: payload,
       };
     case GET_GENRES:
       return { ...state, genres: payload };
@@ -26,25 +25,56 @@ const reducer = (state = initialState, { type, payload }) => {
       return {
         ...state,
         videogames: payload,
-        filtered1: payload,
-        filtered2: payload,
+        videogamesCopy: payload,
+        videogamesCopy2: payload,
       };
     case ORDER_VIDEOGAMES_BY_NAME:
-      return {
-        ...state,
-        videogames:
-          payload === "A-Z"
-            ? state.filter2.sort((a, b) => a.name.localeCompare(b.name))
-            : state.filter2.sort((a, b) => b.name.localeCompare(a.name)),
-      };
+      if (payload === "A-Z") {
+        const orderedAlf = state.videogames.sort((a, b) =>
+          a.name.localeCompare(b.name)
+        );
+        return {
+          ...state,
+          videogames: orderedAlf,
+          videogamesCopy: orderedAlf,
+          videogamesCopy2: state.videogamesCopy2,
+        };
+      }
+      if (payload === "Z-A") {
+        const orderZtoA = state.videogames.sort((a, b) =>
+          b.name.localeCompare(a.name)
+        );
+        return {
+          ...state,
+          videogames: orderZtoA,
+          videogamesCopy: orderZtoA,
+          videogamesCopy2: state.videogamesCopy2,
+        };
+      }
+      break;
+
     case ORDER_VIDEOGAMES_BY_RATING:
-      return {
-        ...state,
-        videogames:
-          payload === "Ascendente"
-            ? state.videogames.sort((a, b) => a.rating - b.rating)
-            : state.videogames.sort((a, b) => b.rating - a.rating),
-      };
+      if (payload === "Ascendente") {
+        const orderedVideogames = state.videogamesCopy.sort(
+          (a, b) => a.rating - b.rating
+        );
+        return {
+          ...state,
+          videogames: orderedVideogames,
+          videogamesCopy: orderedVideogames,
+          videogamesCopy2: state.videogamesCopy2,
+        };
+      } else {
+        const orderedVideogames = state.videogamesCopy.sort(
+          (a, b) => b.rating - a.rating
+        );
+        return {
+          ...state,
+          videogames: orderedVideogames,
+          videogamesCopy: orderedVideogames,
+          videogamesCopy2: state.videogamesCopy2,
+        };
+      }
     case FILTER_BY_ORIGIN:
       return {
         ...state,
@@ -52,18 +82,50 @@ const reducer = (state = initialState, { type, payload }) => {
           payload === "All"
             ? state.videogames
             : payload === "DB"
-            ? state.filter1.filter((videogame) => videogame.created)
-            : state.filter1.filter((videogame) => !videogame.created),
+            ? state.videogames.filter((game) => game.created)
+            : state.videogames.filter((game) => !game.created),
       };
+    // if (payload === "All") {
+    //   return {
+    //     ...state,
+    //     videogames: state.videogames,
+    //     videogamesCopy: state.videogamesCopy,
+    //   };
+    // } else if (payload === "DB") {
+    //   state.videogames = state.videogames.filter(
+    //     (videogame) => videogame.created
+    //   );
+    //   return {
+    //     ...state,
+    //     videogames: state.videogames,
+    //     videogamesCopy: state.videogames,
+    //   };
+    // } else {
+    //   state.videogames = state.videogames.filter(
+    //     (videogame) => !videogame.created
+    //   );
+    //   return {
+    //     ...state,
+    //     videogames: state.videogames,
+    //     videogamesCopy: state.videogames,
+    //   };
+    // }
+
     case FILTER_BY_GENRE:
+      if (payload === "All") {
+        return {
+          ...state,
+          videogames: state.videogamesCopy2,
+          videogamesCopy: state.videogamesCopy2,
+        };
+      }
+      const filteredVideogames = state.videogamesCopy2.filter((game) =>
+        game.genres.find((genre) => genre === payload)
+      );
       return {
         ...state,
-        videogames:
-          payload === "All"
-            ? state.videogames
-            : state.filter3.filter((videogame) =>
-                videogame.genres.includes(payload)
-              ),
+        videogames: filteredVideogames,
+        videogamesCopy: filteredVideogames,
       };
     default:
       return { ...state };

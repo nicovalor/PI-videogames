@@ -42,16 +42,18 @@ const Form = () => {
     const property = event.target.name;
     const value = event.target.value;
 
-    if (!form[property].includes(value)) {
+    const idGenre = genres.find((genre) => genre.name === value).id;
+
+    if (!form[property].includes(idGenre)) {
       const newGenres = [...form[property]];
-      newGenres.push(value);
+      newGenres.push(idGenre);
 
       setForm({ ...form, [property]: newGenres });
 
       setErrors(validateGenres({ ...form, [property]: newGenres }));
     } else {
       const actualGenres = [...form[property]];
-      const index = actualGenres.indexOf(value);
+      const index = actualGenres.indexOf(idGenre);
       actualGenres.splice(index, 1);
       setForm({
         ...form,
@@ -109,16 +111,23 @@ const Form = () => {
               name="genres"
               value={form.genres}
               multiple="true"
-              required="true"
               onChange={handleChangeGenre}
             >
-              {genres?.map((genre) => (
-                <option value={genre}>{genre}</option>
-              ))}
+              {genres &&
+                genres?.map((genre) => (
+                  <option value={genre.name}>{genre.name}</option>
+                ))}
             </select>
           </div>
           <div className={style.column}>
             {errors.genres && <span>{errors.genres}</span>}
+            <ul>
+              {form.genres.map((id) => (
+                <li>
+                  {genres && genres.find((genre) => genre.id === id).name}
+                </li>
+              ))}
+            </ul>
           </div>
         </div>
         <div className={style.row}>
