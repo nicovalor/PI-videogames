@@ -80,6 +80,22 @@ const Form = () => {
 
     if (!Object.keys(errors).length) {
       axios.post("http://localhost:3001/videogames", form);
+      try {
+        window.alert("Game succesfully created");
+        setForm({
+          name: "",
+          genres: [],
+          image: "",
+          description: "",
+          platforms: [],
+          launchDate: "",
+          rating: "",
+          genreId: [],
+        });
+        setErrors({});
+      } catch (error) {
+        window.alert(error.message);
+      }
     }
   };
   return (
@@ -121,13 +137,13 @@ const Form = () => {
           </div>
           <div className={style.column}>
             {errors.genres && <span>{errors.genres}</span>}
-            <ul>
+            {/* <ul>
               {form.genres.map((id) => (
                 <li>
                   {genres && genres.find((genre) => genre.id === id).name}
                 </li>
               ))}
-            </ul>
+            </ul> */}
           </div>
         </div>
         <div className={style.row}>
