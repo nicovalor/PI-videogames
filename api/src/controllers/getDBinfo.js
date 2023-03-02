@@ -10,8 +10,6 @@ const getDBdata = async (name) => {
   }
   const resultsWithName = Videogame.findAll({
     include: {
-      model: Genre,
-      attributes: ["name"],
       where: {
         name: { [Op.iLike]: `%${name}%` },
       },

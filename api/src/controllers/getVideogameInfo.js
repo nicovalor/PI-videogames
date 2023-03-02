@@ -1,4 +1,4 @@
-const { Videogame } = require("../db");
+const { Videogame, Genre } = require("../db");
 const axios = require("axios");
 const cleanVideogame = require("../utils/cleanVideogame");
 require("dotenv").config();
@@ -10,6 +10,9 @@ const getVideoGameInfo = async (id) => {
       include: {
         model: Genre,
         attributes: ["name"],
+        through: {
+          attributes: [],
+        },
       },
     });
     return videoGameInfo;

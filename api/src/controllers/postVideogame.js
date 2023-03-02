@@ -20,17 +20,10 @@ const postVideogame = async (body) => {
       rating,
       created: true,
     };
+
     const game = await Videogame.create(newVideogame);
-    const genres = genreId.map((id) => {
-      Genre.findAll({ where: { id: id } });
-    });
+    game.addGenres(genreId);
 
-    //ADD GENRES SE LED EBE PASAR LOS IDs
-    genres.forEach(async (genre) => {
-      await game.addGenres(genre);
-    });
-
-    genreId.forEach(async (id) => await game.addGenre(id));
     return game;
   }
   throw Error(

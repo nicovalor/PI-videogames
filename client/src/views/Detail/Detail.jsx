@@ -32,8 +32,7 @@ const Detail = () => {
         <span>Release date: {videogame?.launchDate}</span>
         <h4>Rating: {videogame?.rating}</h4>
         <ul>
-          {videogame.genres &&
-            videogame.genres.map((genre) => <li>{genre.name}</li>)}
+          {videogame.genre && videogame?.genre.map((genre) => <li>{genre}</li>)}
         </ul>
       </div>
     </div>
