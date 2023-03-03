@@ -33,6 +33,8 @@ const Detail = () => {
         <h4>Rating: {videogame?.rating}</h4>
         <ul>
           {videogame.genre && videogame?.genre.map((genre) => <li>{genre}</li>)}
+          {videogame.genres &&
+            videogame?.genres.map((genre) => <li>{genre.name}</li>)}
         </ul>
       </div>
     </div>

@@ -30,16 +30,16 @@ const getApiInfo = async (name) => {
     ];
     results = cleanArray(results);
     return results;
+  } else {
+    let resultsByName = await axios.get(
+      `https://api.rawg.io/api/games?key=${API_KEY}&search=${name}&page_size=15`
+    );
+
+    resultsByName = resultsByName.data.results;
+    resultsByName = cleanArray(resultsByName);
+
+    return resultsByName;
   }
-
-  let resultsByName = await axios.get(
-    `https://api.rawg.io/api/games?key=${API_KEY}&search=${name}&page_size=15`
-  );
-
-  resultsByName = resultsByName.data.results;
-  resultsByName = cleanArray(resultsByName);
-
-  return resultsByName;
 };
 
 module.exports = getApiInfo;

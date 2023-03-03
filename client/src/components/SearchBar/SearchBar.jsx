@@ -9,11 +9,13 @@ const SearchBar = () => {
 
   const handleChange = (event) => {
     const value = event.target.value;
-
     setSearchBar(value);
+    dispatch(getVideogamesByName(searchBar));
   };
 
   const handleClick = () => {
+    console.log(searchBar);
+
     dispatch(getVideogamesByName(searchBar));
     setSearchBar("");
   };
@@ -26,7 +28,7 @@ const SearchBar = () => {
         onChange={(event) => handleChange(event)}
         name="SearchBar"
       ></input>
-      <button className={style.button} onClick={(event) => handleClick(event)}>
+      <button className={style.button} onClick={() => handleClick()}>
         BUSCAR
       </button>
     </div>

@@ -3,11 +3,7 @@ import style from "./Form.module.css";
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import { getGenres } from "../../redux/actions";
-import {
-  validate,
-  validateGenres,
-  validatePlatforms,
-} from "../../utils/validations";
+import { validate, validateGenres } from "../../utils/validations";
 
 const Form = () => {
   const dispatch = useDispatch();
@@ -25,7 +21,6 @@ const Form = () => {
     platforms: [],
     launchDate: "",
     rating: "",
-    // genreId: [],
   });
 
   const [errors, setErrors] = useState({});
@@ -47,8 +42,11 @@ const Form = () => {
     if (!form[property].includes(idGenre)) {
       const newGenres = [...form[property]];
       newGenres.push(idGenre);
-
-      setForm({ ...form, [property]: newGenres });
+      setForm({
+        ...form,
+        [property]: newGenres,
+        genreId: form.genres,
+      });
 
       setErrors(validateGenres({ ...form, [property]: newGenres }));
     } else {
@@ -58,6 +56,7 @@ const Form = () => {
       setForm({
         ...form,
         [property]: actualGenres,
+        genreId: form.genres,
       });
 
       setErrors(validateGenres({ ...form, [property]: actualGenres }));

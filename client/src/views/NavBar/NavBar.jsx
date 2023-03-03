@@ -8,14 +8,10 @@ export default function NavBar() {
   const location = useLocation();
   const dispatch = useDispatch();
 
-  const handleHomeButton = (event) => {
-    dispatch(getVideogames());
-  };
-
   return (
     <div className={style.container}>
       <Link className={style.button} to="/home">
-        <div onClick={handleHomeButton}>HOME</div>
+        <div>HOME</div>
       </Link>
       <Link className={style.button} to="/form">
         <div>CREAR JUEGO</div>
