@@ -1,12 +1,9 @@
 import SearchBar from "../../components/SearchBar/SearchBar";
 import style from "./NavBar.module.css";
 import { Link, useLocation } from "react-router-dom";
-import { useDispatch } from "react-redux";
-import { getVideogames } from "../../redux/actions";
 
 export default function NavBar() {
   const location = useLocation();
-  const dispatch = useDispatch();
 
   return (
     <div className={style.container}>
@@ -14,7 +11,7 @@ export default function NavBar() {
         <div>HOME</div>
       </Link>
       <Link className={style.button} to="/form">
-        <div>CREAR JUEGO</div>
+        <div>CREATE NEW GAME</div>
       </Link>
 
       {location.pathname === "/home" ? (
