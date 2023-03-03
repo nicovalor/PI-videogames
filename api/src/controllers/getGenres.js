@@ -15,7 +15,9 @@ const getGenres = async () => {
     });
     return genresFromApi;
   } else {
-    return genres.map((genre) => genre.name);
+    return genres.map((genre) => {
+      return { name: genre.name, id: genre.id };
+    });
   }
 };
 

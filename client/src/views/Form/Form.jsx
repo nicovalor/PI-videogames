@@ -25,7 +25,7 @@ const Form = () => {
     platforms: [],
     launchDate: "",
     rating: "",
-    genreId: [],
+    // genreId: [],
   });
 
   const [errors, setErrors] = useState({});
@@ -72,7 +72,7 @@ const Form = () => {
 
     setForm({ ...form, [property]: platforms });
 
-    setErrors(validatePlatforms({ ...form, [property]: platforms }));
+    // setErrors(validatePlatforms({ ...form, [property]: platforms }));
   };
 
   const handleSubmit = (event) => {
@@ -90,7 +90,7 @@ const Form = () => {
           platforms: [],
           launchDate: "",
           rating: "",
-          genreId: [],
+          // genreId: [],
         });
         setErrors({});
       } catch (error) {
@@ -137,13 +137,6 @@ const Form = () => {
           </div>
           <div className={style.column}>
             {errors.genres && <span>{errors.genres}</span>}
-            {/* <ul>
-              {form.genres.map((id) => (
-                <li>
-                  {genres && genres.find((genre) => genre.id === id).name}
-                </li>
-              ))}
-            </ul> */}
           </div>
         </div>
         <div className={style.row}>

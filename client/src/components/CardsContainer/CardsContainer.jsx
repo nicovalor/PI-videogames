@@ -6,7 +6,6 @@ import {
   orderVideogamesByRating,
   filterByOrigin,
   filterByGenre,
-  getVideogamesByName,
 } from "../../redux/actions";
 import { useSelector } from "react-redux";
 import Card from "../Card/Card";
@@ -74,9 +73,10 @@ const CardsContainer = () => {
             Filtrar por género
           </option>
           <option value="All">All</option>
-          {genres?.map((genre) => (
-            <option value={genre}>{genre}</option>
-          ))}
+          {genres &&
+            genres?.map((genre) => (
+              <option value={genre.name}>{genre.name}</option>
+            ))}
         </select>
         <select
           onChange={(e) => {

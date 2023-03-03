@@ -10,7 +10,7 @@ const Card = (props) => {
         <img className={style.image} src={props.image} alt="" />
         <div className={style.genres}>
           {props.genres.map((genre, index) => (
-            <span key={index}>{genre.name}</span>
+            <span key={index}>{genre}</span>
           ))}
         </div>
       </div>

@@ -45,9 +45,9 @@ export const validateGenres = (form) => {
   return errors;
 };
 
-export const validatePlatforms = (form) => {
-  const errors = {};
-  if (!form.platforms.length)
-    errors.platforms = "Debe escribir al menos una plataforma";
-  return errors;
-};
+// export const validatePlatforms = (form) => {
+//   const errors = {};
+//   if (form.platforms.length === "")
+//     errors.platforms = "Debe escribir al menos una plataforma";
+//   return errors;
+// };
