@@ -70,8 +70,6 @@ const Form = () => {
     const platforms = value.split(",");
 
     setForm({ ...form, [property]: platforms });
-
-    // setErrors(validatePlatforms({ ...form, [property]: platforms }));
   };
 
   const handleSubmit = (event) => {
@@ -226,11 +224,11 @@ const Form = () => {
 
         {Object.keys(errors).length ? (
           <button className={style.disabledButton} disabled type="submit">
-            CREAR JUEGO
+            CREATE GAME
           </button>
         ) : (
           <button className={style.button} type="submit">
-            CREAR JUEGO
+            CREATE GAME
           </button>
         )}
       </form>
