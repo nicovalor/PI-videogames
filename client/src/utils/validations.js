@@ -4,6 +4,8 @@ export function validate(form) {
 
   if (form.name.trim() === "") {
     errors.name = "Please enter a name for the game.";
+  } else if (form.name.length > 30) {
+    errors.name = "The name of tthe game must be under 30 characters";
   }
 
   if (form.genres.length === 0) {

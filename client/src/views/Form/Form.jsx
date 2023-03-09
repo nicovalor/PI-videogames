@@ -72,13 +72,15 @@ const Form = () => {
     setForm({ ...form, [property]: platforms });
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
 
-    if (!Object.keys(errors).length) {
-      axios.post("http://localhost:3001/videogames", form);
-      try {
+    try {
+      if (!Object.keys(errors).length) {
+        await axios.post("http://localhost:3001/videogames", form);
+
         window.alert("Game succesfully created");
+
         setForm({
           name: "",
           genres: [],
@@ -90,10 +92,11 @@ const Form = () => {
           // genreId: [],
         });
         setErrors({});
-      } catch (error) {
-        window.alert(error.message);
       }
+    } catch (error) {
+      window.alert(error.message);
     }
+    window.alert("Game succesfully created");
   };
   return (
     <div className={style.container}>
